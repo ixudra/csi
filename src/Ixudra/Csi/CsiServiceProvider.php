@@ -16,7 +16,7 @@ class CsiServiceProvider extends ServiceProvider {
 
     public function register()
     {
-        $this->app['csi'] = $this->app->share(
+        $this->app['Csi'] = $this->app->share(
             function($app)
             {
                 return new CsiService( new CrashFactory() );
@@ -26,7 +26,7 @@ class CsiServiceProvider extends ServiceProvider {
 
     public function provides()
     {
-        return array('csi');
+        return array('Csi');
     }
 
 }

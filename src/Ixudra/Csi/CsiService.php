@@ -1,6 +1,8 @@
 <?php namespace Ixudra\Csi;
 
 
+use Config;
+
 use Ixudra\Curl\CurlService;
 use Ixudra\Csi\Services\CrashFactory;
 
@@ -18,7 +20,7 @@ class CsiService {
     public function registerCrash(\Exception $exception)
     {
         $this->getCurlService()->post(
-            $this->getUrl() .'/crashes', $this->crashFactory->createFromException( $exception )
+            Config::get('Csi::url'), $this->crashFactory->createFromException( $exception )
         );
     }
 
@@ -29,11 +31,6 @@ class CsiService {
         }
 
         return $this->curlService;
-    }
-
-    protected function getUrl()
-    {
-        return $this->app['config']->get('Csi::baseUrl');
     }
 
 }

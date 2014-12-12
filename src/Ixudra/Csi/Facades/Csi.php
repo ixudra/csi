@@ -10,7 +10,7 @@ class Csi extends Facade {
      */
     protected static function getFacadeAccessor()
     {
-        return 'csi';
+        return 'Csi';
     }
 
 }

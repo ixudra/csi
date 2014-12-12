@@ -7,14 +7,6 @@ This package can be used by anyone at any given time, but keep in mind that it i
 
 
 
-
-## Why use this package?
-
-This
-
-
-
-
 ## Installation
 
 Pull this package in through Composer:
@@ -23,7 +15,7 @@ Pull this package in through Composer:
 
     {
         "require": {
-            "ixudra/csi": "0.1.*"
+            "ixudra/csi": "1.*"
         }
     }
 
@@ -55,13 +47,31 @@ Add the facade to your `config/app.php` file:
 
 ```
 
+
+Add your API key to your .env.php file:
+
+```php
+
+    return array(
+
+        // ...
+
+        'Csi'                       => array(
+
+            'API_KEY'                   => 'YourAppApiKey'
+
+        ),
+
+    );
+
+```
+
 Add the error handling instructions to your `bootstrap/global.php` file:
 
 ```php
 
     App::error(function(Exception $exception, $code)
     {
-        // Create crash report
         CSI::registerCrash( $exception );
     
         Log::error($exception);
@@ -70,23 +80,22 @@ Add the error handling instructions to your `bootstrap/global.php` file:
 ```
 
 
-Add the resource controller to your `app/routes.php` file:
+
+## Usage
+
+In order to use the package, you need to tell your app to send exception information to your portal of choice. This will happen automatically once you have completed the setup mentioned above. Once an exception is registered, the web portal administrator will receive the exception information as soon as he logs in and will take action as soon as possible.
+
+
+
+## Configuration
+
+You can also publish the package's configuration files using the artisan command:
 
 ```php
 
-    Route::group(array('before' => 'auth', 'prefix' => 'admin'), function()
-    {
-
-        Route::resource('crashes', 'Ixudra\Csi\Controllers\CrashController', array( 'only' => array('index', 'show', 'destroy' ) ));
-
-    });
+    php artisan config:publish ixudra/csi
 
 ```
 
-This last step is optional and is only required if you would like to use ths built-in controller. Alternatively, you can also create your own controller with custom logic and views.
-
-
-
-
-## Usage
+This will allow you to change the web portal URL as well as browser and platform information that is used by the package.
 

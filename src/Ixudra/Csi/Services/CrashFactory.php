@@ -13,7 +13,7 @@ class CrashFactory {
 
             'project'           => array(
 
-                'public_key'        => $_SERVER['IXUDRA_API_KEY']
+                'public_key'        => $_SERVER['Csi.API_KEY']
 
             ),
 
@@ -55,8 +55,8 @@ class CrashFactory {
             'browser_version'       => $browser['version'],
             'url'                   => Request::url(),
             'http_method'           => Request::method(),
-            'post_data'             => json_encode( $_POST ),
-            'get_data'              => json_encode( $_GET )
+            'post_data'             => $_POST,
+            'get_data'              => $_GET
         );
 
         return $input;
