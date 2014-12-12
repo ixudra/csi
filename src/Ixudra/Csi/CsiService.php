@@ -20,7 +20,7 @@ class CsiService {
     public function registerCrash(\Exception $exception)
     {
         $this->getCurlService()->post(
-            Config::get('Csi::url'), $this->crashFactory->createFromException( $exception )
+            Config::get('csi::url'), $this->crashFactory->createFromException( $exception )
         );
     }
 
