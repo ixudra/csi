@@ -55,8 +55,8 @@ class CrashFactory {
             'browser_version'       => $browser['version'],
             'url'                   => Request::url(),
             'http_method'           => Request::method(),
-            'post_data'             => $_POST,
-            'get_data'              => $_GET
+            'post_data'             => json_encode($_POST),
+            'get_data'              => json_encode($_GET)
         );
 
         return $input;
