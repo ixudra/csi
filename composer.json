@@ -1,7 +1,7 @@
 {
     "name": "ixudra/csi",
     "description": "Custom PHP Crash Scene Investigation (CSI) library for the Laravel 4 framework - developed by Ixudra",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "keywords": ["Ixudra", "CSI", "Crash", "Laravel", "Exception", "Error", "Exception handling"],
     "homepage": "http://ixudra.be",
     "license": "MIT",

@@ -56,9 +56,9 @@ Add your API key to your .env.php file:
 
         // ...
 
-        'Csi'                       => array(
+        'csi'                       => array(
 
-            'API_KEY'                   => 'YourAppApiKey'
+            'public_key'                => 'YourAppApiKey'
 
         ),
 

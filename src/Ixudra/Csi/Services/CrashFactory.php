@@ -13,7 +13,7 @@ class CrashFactory {
 
             'project'           => array(
 
-                'public_key'        => $_SERVER['csi.API_KEY']
+                'public_key'        => $_SERVER['csi.public_key']
 
             ),
 
