@@ -3,6 +3,6 @@
 
     return array(
 
-        'usrl'              => 'ixudra.be/api/crashes'
+        'url'               => 'ixudra.be/api/crashes'
 
     );
