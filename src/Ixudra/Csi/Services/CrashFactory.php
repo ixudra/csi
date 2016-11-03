@@ -44,9 +44,20 @@ class CrashFactory {
 
     protected function extractRequestInput()
     {
-        $userAgent = $_SERVER['HTTP_USER_AGENT'];
-        $platform = $this->getPlatform( $userAgent );
-        $browser = $this->getBrowser( $userAgent );
+        $platform = array(
+            'name'          => 'unknown',
+            'version'       => 'unknown',
+        );
+        $browser = array(
+            'name'          => 'unknown',
+            'version'       => 'unknown',
+        );
+
+        if( isset($_SERVER['HTTP_USER_AGENT']) ) {
+            $userAgent = $_SERVER['HTTP_USER_AGENT'];
+            $platform = $this->getPlatform( $userAgent );
+            $browser = $this->getBrowser( $userAgent );
+        }
 
         $input = array(
             'user_ip'               => Request::getClientIp(),
