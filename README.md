@@ -15,7 +15,7 @@ Pull this package in through Composer:
 
     {
         "require": {
-            "ixudra/csi": "1.*"
+            "ixudra/csi": "2.*"
         }
     }
 
@@ -28,54 +28,31 @@ Add the service provider to your `config/app.php` file:
     providers     => array(
 
         //...
-        'Ixudra\Csi\CsiServiceProvider',
-
-    )
-
-```
-
-Add the facade to your `config/app.php` file:
-
-```php
-
-    facades     => array(
-
-        //...
-        'CSI'       => 'Ixudra\Csi\Facades\Csi',
+        Ixudra\Csi\CsiServiceProvider::class,
 
     )
 
 ```
 
 
-Add your API key to your .env.php file:
+Add your API key to your `.env` file:
 
 ```php
 
-    return array(
-
-        // ...
-
-        'csi'                       => array(
-
-            'public_key'                => 'YourAppApiKey'
-
-        ),
-
-    );
+    CSI_BASE_URL=http://ixudra.dev/api/crashes
+    CSI_PUBLIC_KEY=gA2sfO7V3xsgiSYtVDU7yFnSB5qvCyS+TxJ0GMdmUN0=
 
 ```
 
-Add the error handling instructions to your `bootstrap/global.php` file:
+Add the error handling instructions to your `bootstrap/app.php` file:
 
 ```php
 
-    App::error(function(Exception $exception, $code)
-    {
-        CSI::registerCrash( $exception );
-    
-        Log::error($exception);
-    });
+$app->singleton(
+    Illuminate\Contracts\Debug\ExceptionHandler::class,
+    Ixudra\Csi\Exceptions\CsiExceptionHandler::class,
+    App\Exceptions\Handler::class
+);
 
 ```
 

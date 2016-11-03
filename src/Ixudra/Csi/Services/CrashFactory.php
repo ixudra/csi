@@ -1,19 +1,20 @@
 <?php namespace Ixudra\Csi\Services;
 
 
+use Exception;
 use Auth;
 use Config;
 use Request;
 
 class CrashFactory {
 
-    public function createFromException(\Exception $exception)
+    public function createFromException(Exception $exception)
     {
         return array(
 
             'project'           => array(
 
-                'public_key'        => $_SERVER['csi.public_key']
+                'public_key'        => env('CSI_PUBLIC_KEY'),
 
             ),
 
@@ -26,7 +27,7 @@ class CrashFactory {
         );
     }
 
-    protected function extractExceptionInput(\Exception $exception)
+    protected function extractExceptionInput(Exception $exception)
     {
         $input = array(
             'class_name'                => $exception->getTrace()[0]['class'],
@@ -64,7 +65,7 @@ class CrashFactory {
 
     protected function getPlatform($userAgent)
     {
-        foreach( Config::get('platforms') as $regex => $value ) {
+        foreach( Config::get('csi.platforms') as $regex => $value ) {
             if( preg_match($regex, $userAgent) ) {
                 return $value;
             }
@@ -81,11 +82,11 @@ class CrashFactory {
         $version = '';
         try {
             $version = get_browser( $userAgent )['version'];
-        } catch(\Exception $e) {
+        } catch(Exception $e) {
 
         }
 
-        foreach( Config::get('browsers') as $regex => $value ) {
+        foreach( Config::get('csi.browsers') as $regex => $value ) {
             if( preg_match($regex, $userAgent) ) {
                 return array(
                     'name'              => $value,

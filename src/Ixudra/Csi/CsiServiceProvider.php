@@ -2,28 +2,32 @@
 
 
 use Illuminate\Support\ServiceProvider;
-use Ixudra\Csi\Services\CrashFactory;
 
 class CsiServiceProvider extends ServiceProvider {
 
+    /**
+     * @var bool
+     */
     protected $defer = false;
 
-
-    public function boot()
-    {
-        $this->package('ixudra/csi');
-    }
-
+    /**
+     * @return void
+     */
     public function register()
     {
-        $this->app['Csi'] = $this->app->share(
-            function($app)
-            {
-                return new CsiService( new CrashFactory() );
-            }
+        $configPath = __DIR__ . '/../../config/config.php';
+
+        $this->mergeConfigFrom($configPath, 'csi');
+        $this->publishes(
+            array(
+                $configPath         => config_path('csi.php'),
+            )
         );
     }
 
+    /**
+     * @return array
+     */
     public function provides()
     {
         return array('Csi');
