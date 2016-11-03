@@ -39,8 +39,8 @@ Add your API key to your `.env` file:
 
 ```php
 
-    CSI_BASE_URL=http://ixudra.dev/api/crashes
-    CSI_PUBLIC_KEY=gA2sfO7V3xsgiSYtVDU7yFnSB5qvCyS+TxJ0GMdmUN0=
+    CSI_BASE_URL=ixudra_api_url
+    CSI_PUBLIC_KEY=your_api_key
 
 ```
 
