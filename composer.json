@@ -29,7 +29,5 @@
         "psr-4": {
             "Ixudra\\Csi\\": "src/"
         }
-    },
-
-    "minimum-stability": "stable"
+    }
 }
