@@ -15,7 +15,7 @@ class CsiServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $configPath = __DIR__ . '/../../config/config.php';
+        $configPath = __DIR__ . '/config/config.php';
 
         $this->mergeConfigFrom($configPath, 'csi');
         $this->publishes(
