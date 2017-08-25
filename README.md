@@ -1,6 +1,11 @@
 ixudra/csi
 =====================
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/ixudra/csi.svg?style=flat-square)](https://packagist.org/packages/ixudra/csi)
+[![license](https://img.shields.io/github/license/ixudra/csi.svg)]()
+[![StyleCI](https://styleci.io/repos/27130707/shield)](https://styleci.io/repos/27130707)
+[![Total Downloads](https://img.shields.io/packagist/dt/ixudra/csi.svg?style=flat-square)](https://packagist.org/packages/ixudra/csi)
+
 Custom PHP Crash Scene Investigation (CSI) library for the Laravel 5 framework - developed by Ixudra.
 
 This package can be used by anyone at any given time, but keep in mind that it is optimized for my personal custom workflow. It may not suit your project perfectly and modifications may be in order.
